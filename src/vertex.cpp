@@ -10,7 +10,7 @@ Vertex::Vertex(string label,  Vertex *next) {
     this->next = next;
 };
 
-Vertex::Vertex() : Vertex("undefined", NULL) {
+Vertex::Vertex() : Vertex("", NULL) {
            
 };
   

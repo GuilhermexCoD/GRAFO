@@ -11,21 +11,8 @@ using namespace std;
 */
 
 void List::addVertex(string v) {   
-     
-     Vertex *newvertex = new Vertex(v); 
-
-     newvertex->next = begin->next;
-
-     begin->next = newvertex;
-
-     if(begin == end) {
-          end = newvertex;
-     }
-
-     newvertex = NULL;
-
-     free(newvertex);
-
+    end->next = new Vertex(v);  
+    end = end->next;  
 };
 
 List::List() {   
@@ -42,9 +29,12 @@ Vertex* List::getBegin() {
 };
 
 void List::printList() {
+
       for(Vertex* i = begin->next; i != NULL; i = i->next) {
-            cout <<  i->getLabel() << "-> " << endl;
+            cout <<  i->getLabel() << " -> ";
       }
+
+      cout << "\n" << endl;
 }
 
 //lista adjacente com cabeca, portanto o primeiro elemento sera o begin->next;
