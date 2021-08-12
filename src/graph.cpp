@@ -1,50 +1,49 @@
 #include  <iostream>
-#include  "vertex.h"
-#include "list.h"
-#include <vector>
+#include  "graph.h"
+
 
 using namespace std;
 
 
+bool Graph::addEdge(string v1, string v2) { 
+    //preencher a lista caso os elementos n estejam inseridos
+    return true;  
+};
 
-
-class Graph {
-     
-
-     public:  
-
-       Graph(int nVertex) {
-          this->nVertex = nVertex;
-          this->list = (List**) malloc(nVertex * sizeof(List*));           
-       }
-
-     private:
-
-      List **list;
-      int nVertex;
+bool Graph::addVertex(string v) { 
+    for(int i = 0; i < getnVertex(); i++) {
         
+        if(list[i]->getBegin() == NULL) { 
+            list[i]->addVertex(v);
+            return true;
+        }
+        
+    }
+
+    return false;
+};
+
+Graph::Graph(int nVertex) { 
+    this->list = (List**) malloc(nVertex * sizeof(List*));
+    this->nVertex = nVertex;
+
+    //numero de maximos de ligacao, todos os vertices ligados aos outros respctivamente
+    for(int i = 0;  i < getnVertex(); i++) {
+         list[i] = new List();
+    };
 };
 
 
+Graph::Graph() : Graph(4) {
 
-/*
+};
 
-Lista adjacentes ()
--implementar lista -> lista de vertices
+int Graph::getnVertex() {
+     return this->nVertex;
+};
 
-metodos:
-
-     addEdge(new Vertice(), new Vertice());
-     grau(new Vertice())
-
-
-*/
-
-
-/*
-obs: Qual sera mais facil de implementar
-
-Duas alternativas -> vector (vector<List> v) de lista ou lista de lista(List **list) -> List[0] = (LIST *) malloc(ngrau * sizeof(List)) 
-vetor hardcoded[nVexter];
-
-*/
+void Graph::printGraph() { 
+    for(int i = 0; i < getnVertex(); i++) { 
+        list[i]->printList();
+    }
+}

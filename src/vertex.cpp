@@ -1,39 +1,28 @@
 #include <iostream> 
-
+#include "vertex.h"
 
 using namespace std;
 
 
-class Vertice {
-     private: 
-       Vertice *next;
-       string label;
 
-
-     public: 
-
-        Vertice(string label, Vertice *next) {
-            this->label = label;
-            this->next = next;
-        }
-
-        Vertice() : Vertice("undefined", NULL) {
-           
-        }
-  
-        Vertice(string label) : Vertice(label, NULL) {
-           
-        }
-
-        Vertice *getNext() { 
-            return this->next;
-        }
-
-        string getLabel() {
-            return this->label;
-        }      
+Vertex::Vertex(string label,  Vertex *next) {
+    this->label = label;
+    this->next = next;
 };
 
+Vertex::Vertex() : Vertex("undefined", NULL) {
+           
+};
+  
+Vertex::Vertex(string label) : Vertex(label, NULL) {
+           
+};
+
+string Vertex:: getLabel() { 
+    return this->label;
+};
+
+  
 
 
 
