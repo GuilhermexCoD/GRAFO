@@ -2,7 +2,6 @@
 #include "list.h"
 #include "vertex.h"
 
-
 using namespace std;
 
 /*
@@ -10,31 +9,39 @@ using namespace std;
  @param  string (name or label of Vertex)
 */
 
-void List::addVertex(string v) {   
-    end->next = new Vertex(v);  
-    end = end->next;  
+void List::addVertex(string v)
+{
+     end->next = new Vertex(v);
+     end = end->next;
 };
 
-List::List() {   
-     this->begin = new Vertex();     
+List::List()
+{
+     this->begin = new Vertex();
      this->end = this->begin;
 };
 
-bool List::isEmpty() {
+bool List::isEmpty()
+{
      return this->begin == this->end;
 };
 
-Vertex* List::getBegin() { 
+Vertex *List::getBegin()
+{
      return this->begin->next;
 };
 
-void List::printList() {
+void List::printList()
+{
 
-      for(Vertex* i = begin->next; i != NULL; i = i->next) {
-            cout <<  i->getLabel() << " -> ";
-      }
+     for (Vertex *i = begin->next; i != NULL; i = i->next)
+     {
 
-      cout << "\n" << endl;
+          cout << i->getLabel() << (i->next == NULL ? " -> NULL " : " -> ");
+     }
+
+     cout << "\n"
+          << endl;
 }
 
 //lista adjacente com cabeca, portanto o primeiro elemento sera o begin->next;
