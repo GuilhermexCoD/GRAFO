@@ -9,7 +9,10 @@ FLAGS = -O3
 LIBS = -lm -libgr
 
 
-all: lib myapp
+all: createfolders lib myapp 
+
+createfolders:
+	 mkdir -p $(LIB) $(OBJ) $(BIN)
 
 lib:  $(OBJ)/graph.o \
 	$(OBJ)/list.o \
@@ -26,7 +29,7 @@ $(OBJ)/%.o: $(SRC)/%.cpp $(INCLUDE)/%.h
 	g++ $(FLAGS) -c $< -I $(INCLUDE) -o $@
 
 $(BIN)/%: $(APP)/%.cpp 
-	g++ $(FLAGS) $< -lgr -L $(LIB) -I $(INCLUDE) -o $@
+	g++ $(FLAGS) $< -lgr  -L $(LIB) -I $(INCLUDE) -o $@
 
 clean: 
 	rm -rf $(BIN)/* $(OBJ)/*

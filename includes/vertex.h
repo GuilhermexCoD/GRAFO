@@ -4,6 +4,9 @@
 
 
 using namespace std;
+
+
+
 class Vertex {
     private: 
         string label;
