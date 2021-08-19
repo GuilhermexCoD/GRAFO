@@ -14,12 +14,11 @@ int main() {
     gr->addVertex("2");
     gr->addVertex("1");
 
-    gr->addEdge("1", "2");
+    gr->addEdgeLoop("1", "2");
     gr->addEdge("2", "3");
     gr->addEdge("2", "5");
+    
     gr->printGraph();
-
-
     
     return 0;
 }

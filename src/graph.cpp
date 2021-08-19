@@ -17,36 +17,50 @@ using namespace std;
 
 bool Graph::addEdge(string v1, string v2) { 
 
-    bool v2Exist = false;
-    bool v1Exist = false;
+    int endV1 = getVertexIndex(v1);
+    int endV2 = getVertexIndex(v2);
 
-    int endV1 = 0;
-    int endV2 = 0;
-    for(int i = 0; i < nVertex; i++) {
-        
-        if(!list[i]->getBegin()->getLabel().compare(v1)) {
-            endV1 = i;
-            v1Exist = true;
-        }
-
-        if(!list[i]->getBegin()->getLabel().compare(v2)) {
-             endV2 = i;
-             v2Exist = true;
-        }
-
-     };
-
-        if(v2Exist && v1Exist) {
-            list[endV1]->addVertex(v2);
-            list[endV2]->addVertex(v1); 
-            return true;
-        }
-
+    if(endV1 >= 0 && endV2 >= 0) {
+        list[endV1]->addVertex(v2);
+        return true;
+    }
     //verificar so os elementos fazem mais de duas mesma ligacao
     
      return false;
 
 };
+
+bool Graph::addEdgeLoop(string v1, string v2) { 
+
+    int endV1 = getVertexIndex(v1);
+    int endV2 = getVertexIndex(v2);
+
+    if(endV1 >= 0 && endV2 >= 0) {
+        list[endV1]->addVertex(v2);
+        list[endV2]->addVertex(v1);
+        return true;
+    }
+    //verificar so os elementos fazem mais de duas mesma ligacao
+    
+     return false;
+
+};
+
+int Graph::getVertexIndex(string label) {
+
+    int index = -1;
+
+    for(int i = 0; i < nVertex; i++) {
+        
+        if(!list[i]->getBegin()->getLabel().compare(label)) {
+            index = i;
+        }
+
+    };
+
+    return index;
+}
+
 
 bool Graph::addVertex(string v) { 
     for(int i = 0; i < getnVertex(); i++) {
